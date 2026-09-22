@@ -1,0 +1,33 @@
+customer_name = input("Type your name --> ")
+age = int(input("What's your age? --> "))
+is_member = bool(input("Are you a member? --> ") == "True" or "true")
+item_price = float(input("Input the price here --> "))
+quantity = int(input("Number or items -->" ))
+has_coupon = bool(input("Do you have coupon --> "))
+coupon_code = input("Input your code --> ")
+import getpass
+password = getpass.getpass("Enter your password:")
+
+subtotal = 0
+
+if age >= 18 and quantity >= 0:
+    print("Order accepted")
+    if is_member == True and subtotal >= 5000:
+        discount = subtotal * 0.10
+        print("Congrats, you have a 10 percent discount", discount)
+    elif coupon_code == "save20":
+        discount = subtotal * 0.5
+        print("Congrats, you have a 5 percent discount and additional 5 percent due to coupon", discount)
+    elif is_member == True or has_coupon == True:
+        discount = subtotal * 0.10
+        print("Congrats, you have a 10 percent discount because you are a member and you have coupon", discount)
+        if  subtotal >= 3000:
+            discount = subtotal * 0.5
+            print("Your discount is", discount)
+        else:
+            print("Your discount is", discount)
+
+else:
+    print("Order rejected: Invalid customer or quantity")
+
+print("")
